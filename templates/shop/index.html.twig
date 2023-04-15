@@ -1,0 +1,90 @@
+{% extends 'core/base.html.twig' %}
+
+{% block title %}
+	ClemJewlery
+{% endblock %}
+
+{% block content %}
+	<link
+	rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<!-- header section start -->
+	<div class="header_section">
+
+		<li class="nav-item dropdown">
+			<a class="btn btn-secondary dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				Catégorie
+			</a>
+			<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<li>
+					<a class="dropdown-item" href="{{ path('app_shop')}}">Toutes
+					</a>
+				</li>
+				{% for categorie in categories %}
+					<li>
+						<a class="dropdown-item" href="{{path('app_shop', {categorie: categorie.idCategorie })}}">{{categorie.categorie}}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</li>
+
+		<div
+			class="main">
+			<!-- Another variation with a button -->
+			<form method="POST" action="{{ app.request.uri }}" class="input-group">
+				<input name="search_field" type="search" class="form-control" placeholder="Recherche" aria-label="Search">
+				<div class="input-group-append">
+					<button class="btn btn-secondary" type="submit" style="background-color: #f26522; border-color:#f26522 ">
+						<i><img src="{{asset('images/search-icon.png')}}"></i>
+					</button>
+				</div>
+			</form>
+		</div>
+		<div class="header_box mb-4">
+
+			<div class="login_menu">
+
+		{% if app.user %}
+				 <a href="{{path('app_profile')}}"> <img class="imgProfil"  src="https://ui-avatars.com/api/?name={{ app.user.firstName }}+{{ app.user.lastName }}&rounded=true&background=random" alt=""></a>
+
+				<li>
+					<a class="text-dark" href="{{path('app_logout')}}">Déconnexion</a>
+				</li>
+		{% elseif not app.user %}
+				<li>
+					<a class="text-dark" href="{{path('app_login')}}">Connexion</a>
+				</li>
+		{% endif %}
+
+
+
+				<a href="{{path('app_panier')}}">
+					<i class="p-3 fa-solid fa-cart-shopping fa-2xl"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</div></div><!-- header section end --></div><div class="row">{% if produits | length == 0 %}
+<div class="col-12">
+
+	<div class="no_product">Aucun résultat pour cette recherche</div>
+
+</div>{% endif %}{% for produit in produits %}
+<div class="col-3">
+	<div class="box_main">
+		<h4 name="txtProduitName" class="shirt_text">{{produit.nom}}</h4>
+		<h4 name="txtProduitPrix" class="price_text text-success">${{produit.prix}}</h4>
+		<div>
+			<a class="produit-test" href="{{path('produit_modal', {idProduit : produit.idProduit})}}">
+				<img class="electronic_img img-fluid" src="{{asset_if(produit.imagePath, 'images/non-disponible.jpeg')}}">
+			</a>
+		</div>
+		<div class="btn_main">
+			<div class="buy_bt">
+				<a href="{{path('produit_add', {idProduit : produit.idProduit})}}">Acheter</a>
+			</div>
+			<div class="seemore_bt">
+				<a class="produit-test" href="{{path('produit_modal', {idProduit : produit.idProduit})}}">Détail</a>
+			</div>
+		</div>
+	</div>
+</div>{% endfor %}</div></div><div class="modal" id="produit-modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content" id="produit-modal-content"></div></div></div>{% block javascripts %}<script src="{{ asset('scripts/modal.produit.js')}}"></script>{% endblock %}<script src="{{ asset('scripts/modal.produit.js')}}"></script>{% endblock %}

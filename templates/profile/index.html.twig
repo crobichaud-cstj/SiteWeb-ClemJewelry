@@ -1,0 +1,110 @@
+{% extends 'core/base.html.twig' %}
+{% form_theme modificationForm 'bootstrap_5_layout.html.twig' %}
+{% form_theme motDePasseForm 'bootstrap_5_layout.html.twig' %}
+
+{% block content %}
+   
+    <div class="row mt-5">
+        <div class="col-3">
+            <h1>Informations du profil</h1>  
+    </div>
+    <div class="col-6 mb-5">
+    <a href="{{ path('app_logout') }}">Se déconnecter</a>
+    </div>
+
+            {% for flash in app.flashes('profile_info')%}
+                <div class="alert my-3 {{ flash.color }}">{{ flash.content }}</div>
+            {% endfor %}
+
+<div class="row col-lg-8 mx-auto">
+
+         
+            {{ form_start(modificationForm, {'attr': {'class': 'needs-validation-register', 'novalidate': 'novalidate' }}) }}
+                <div class="row">
+                    <div class="col-6">
+                        <label class="form-label">Courriel</label>
+                        <input class="form-control" disabled value="{{app.user.email}}" ></input>
+                    </div>
+                    <div class="col-6">
+                        {{ form_row(modificationForm.phone, {'attr': {'class': 'txtPhone'}}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        {{ form_row(modificationForm.lastName) }}   
+                    </div>
+                    <div class="col-6">
+                        {{ form_row(modificationForm.firstName) }}  
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        {{ form_row(modificationForm.address) }}   
+                    </div>
+                    <div class="col-6">
+                        {{ form_row(modificationForm.zipCode, {'attr': {'class': 'txtZipCode'}}) }}  
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        {{ form_row(modificationForm.city) }}   
+                    </div>
+                    <div class="col-6">
+                        {{ form_row(modificationForm.province) }}  
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    {{ form_row(modificationForm.create) }}
+                </div>
+                {{ form_end(modificationForm) }}
+            </div>
+    </div>
+
+    <div class="row col-lg-8 mx-auto">
+
+         {% for flash in app.flashes('profile_pass')%}
+                <div class="alert my-3 {{ flash.color }}">{{ flash.content }}</div>
+            {% endfor %}
+
+            {{ form_start(motDePasseForm, {'attr': {'class': 'needs-validation-register', 'novalidate': 'novalidate' }}) }}
+                
+                <div class="row">
+                    <div class="col-12">
+                        {{ form_row(motDePasseForm.oldPassword) }}   
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        {{ form_row(motDePasseForm.password.first) }}   
+                    </div>
+                    <div class="col-6">
+                        {{ form_row(motDePasseForm.password.second) }}  
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    {{ form_row(motDePasseForm.create) }}
+                </div>
+                {{ form_end(motDePasseForm) }}
+            </div>
+    </div>
+        </div>
+    </div>
+
+
+        </div>
+
+        
+{% endblock %}
+
+
+{% block stylesheets %} 
+    
+{% endblock %}
+
+
+{% block javascripts %}
+    <script defer src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js"></script>
+	<script defer src="{{ asset('scripts/register.js')}}"></script>
+{% endblock %}

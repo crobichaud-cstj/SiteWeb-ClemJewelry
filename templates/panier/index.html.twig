@@ -1,0 +1,109 @@
+{% extends 'core/base.html.twig' %}
+
+{% block title %}
+	ClemJewlery
+{% endblock %}
+
+{% block content %}
+
+	<div class="container py-5">
+		<form action="{{ path('produit_update') }}" method="POST">
+			<div class="row">
+
+                {% for flash in app.flashes('panier') %}
+                    <div class="alert {{ flash.color }}">{{ flash.content }}</div>
+                {% endfor %}
+
+				<div class="col-8">
+
+					<div class="card mb-3">
+						{% if panier.achats | length == 0 %}
+							<div class="no_product">Votre panier est vide!</div>
+						{% endif %}
+
+						{% for key, achat in panier.achats %}
+							<div class="row g-0">
+								<div class="col-md-4">
+									<img src="{{asset_if(achat.produit.imagePath, 'images/non-disponible.jpeg')}}" class="img-fluid rounded-start" alt="Product Image">
+								</div>
+
+
+								<div class="col-md-8">
+									<div class="card-body">
+										<h1 class="shirt_text">{{achat.produit.nom}}</h1>
+										<p class="price_text text-success">
+											{{achat.prixAchat}}
+											$
+											<a href={{path('produit_delete', { index : key } )}} class="trash">
+												<i class="fa-solid fa-trash-can"></i>
+											</a>
+
+
+										</p>
+
+
+										<div class="d-flex justify-content-center align-items-center">
+											<div class="number-picker">
+												<input name="{{ 'inputQTN[' ~ key ~ ']' }}" type="number" min="0" max="99" value="{{achat.quantite}}">
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="card mb-3">
+						<div class="card-body">
+							<h5 class="card-title">Sommaire</h5>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									Sous total
+									<span class="badge" style="background-color: #f26522; border-color:#f26522 " >{{panier.subtotal}}
+										$</span>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									Livraison
+									<span class="badge" style="background-color: #f26522; border-color:#f26522 ">{{panier.shipping}}
+										$</span>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									TPS
+									<span class="badge" style="background-color: #f26522; border-color:#f26522 ">{{panier.priceTPS}}
+										$</span>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									TVQ
+									<span class="badge" style="background-color: #f26522; border-color:#f26522 ">{{panier.priceTVQ}}
+										$</span>
+								</li>
+							</ul>
+
+							<div class="d-grid gap-2 col-7 mx-auto">
+								<a class="btn btn-primary btn-block mt-3 " style="background-color: #f26522; border-color:#f26522 ">
+									<i class="fas fa-credit-card me-2"></i>Commander
+									{{panier.total}}
+									$</a>
+							</div>
+
+
+							<div class="d-flex flex-row justify-content-md-center my-2">
+								<button name="action" value="update" type="submit" class="btn btn-success col-4 mx-3">
+									<i class="fas fa-arrows-rotate"></i>
+									Mettre à jour</button>
+								<button name="action" value="empty" type="submit" class="btn btn-danger col-4 mx-3">
+									<i class="fa-solid fa-dumpster"></i>
+									Vider le panier
+								</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+
+		{% endblock %}
