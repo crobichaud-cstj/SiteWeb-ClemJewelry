@@ -1,5 +1,5 @@
-# ClemJewlery
-ClemJewlery est un site web développé en utilisant le framework Symfony, créé dans le cadre du cours de Développement Web (420-4D6-JR) au cégep.
+# ClemJewelry
+ClemJewelry est un site web développé en utilisant le framework Symfony, créé dans le cadre du cours de Développement Web (420-4D6-JR) au cégep.
 
 ## Table des matières
 
@@ -8,16 +8,14 @@ ClemJewlery est un site web développé en utilisant le framework Symfony, cré�
 
 ## Description
 
-Sur ce site nous pouvons ce créer un compte, "acheter" des bijoux fait à la main, voir ces commandes...
-Il y a de plus un compte admin. Sur celui-ci on peut modifier un produit, céer un produit et créer une catégorie.
-Sur celui-ci on peut aussi géré les commandes des utilisateurs.
+Sur ce site, nous pouvons créer un compte, "acheter" des bijoux faits à la main et voir nos commandes. De plus, il existe un compte administrateur. Avec ce compte, nous avons la possibilité de modifier un produit, créer un produit et ajouter une catégorie. De plus, il est possible de gérer les commandes des utilisateurs.
 
 ## Utilisation
 
-Vous pouvez acceder au site ici : [ClemJewlery](https://tp1.2150658.techinfo-cstj.ca/)
+Vous pouvez accéder au site ici : [ClemJewlery](https://tp1.2150658.techinfo-cstj.ca/)
 
-# ClemJewlery
-ClemJewlery is a website developped using the framework Symfony, created in the context of the course of Développement Web (420-4D6-JR) at the cégep.
+# ClemJewelry
+ClemJewelry is a website developed using the Symfony framework, created in the context of the Développement Web (420-4D6-JR) course at the cégep.
 
 ## Table of content
 
@@ -26,9 +24,7 @@ ClemJewlery is a website developped using the framework Symfony, created in the 
 
 ## Description
 
-On this site we can create an acompte, "buy" some home made jewlery, you can see your orders...
-There is a admin acount. On this one we can modify a product, create a new product and create a new category.
-On this acount you manage all the orders of all the users.
+On this site, we can create an account, 'buy' some homemade jewelry, and view your orders. There is an admin account as well. With this account, you can modify a product, create new products, and establish new categories. Using this account, you can manage all orders from all users.
 
 
 ## Utilisation
