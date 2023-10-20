@@ -12,7 +12,7 @@ Sur ce site, nous pouvons créer un compte, "acheter" des bijoux faits à la mai
 
 ## Utilisation
 
-Vous pouvez accéder au site ici : [ClemJewlery](https://tp1.2150658.techinfo-cstj.ca/)
+Vous pouvez accéder au site ici : [ClemJewlery](https://tp1.2150658.techinfo-cstj.ca/](https://4d6.2150658.techinfo-cstj.ca)
 
 # ClemJewelry
 ClemJewelry is a website developed using the Symfony framework, created in the context of the Développement Web (420-4D6-JR) course at the cégep.
